@@ -6,23 +6,23 @@ const userRoutes = require('./routes/userRoutes');
 
 dotenv.config();
 const app = express();
-const path = require('path');
-const fileURLToPath  = require('url');
+// const path = require('path');
+// const fileURLToPath  = require('url');
 
-//Resolving dirname for ES Module.
-const __filename = fileURLToPath(import.meta.url);
-const _dirname = path.dirname(_filename);
+// //Resolving dirname for ES Module.
+// const __filename = fileURLToPath(import.meta.url);
+// const _dirname = path.dirname(_filename);
 app.use(cors());
 app.use(express.json());
 
 app.use('/users', userRoutes);
 //Use the frontend app.
-app.use(express.static(path.join(__dirname,"/frontend/build")));
+// app.use(express.static(path.join(__dirname,"/frontend/build")));
 
-//Render frontend for any path.
-app.use("*", (req,res) => {
-    res.sendFile(path.join(__dirname,"/frontend/build/index.html"));
-})
+// //Render frontend for any path.
+// app.use("*", (req,res) => {
+//     res.sendFile(path.join(__dirname,"/frontend/build/index.html"));
+// })
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
